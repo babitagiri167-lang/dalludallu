@@ -1,95 +1,737 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
-    <title>babita dalluu</title>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Babita | My Little Portfolio</title>
 
-    <div class="heading-stuff">
-
-<h2> My Introduction.</h2>
-<br>
-<p> Hello, I am Dalluu anddddddd I am a cute pig, so Basically, what i do is, i love to sleep and sleep and sleep and sleep.</p>
-    </div>
-
-    <div class="image-class"><br>
-
-       <center> <h3> This is my pciture below <3 </h3> </center>  <br>
-
-          <center>  <img src="https://static.vecteezy.com/system/resources/thumbnails/056/842/357/small_2x/cute-piglet-wearing-flower-crown-sticking-out-tongue-in-meadow-photo.jpg" alt="" class="sr"> </center>
-   <marquee> <P> Like my Picture <3 </P></marquee>
-    
-    </div><br>
-    <div class="buttons-class">
-     <center>  <button id="love"> 💗 </button> </center> 
-    </div>
-<script>
-    button = document.getElementById("love");
-    button.addEventListener("click", function() {
-        replaceImageonClick();
-        alert("tyo pic ta makeup garya wala thiyo huhuhu yo ho mero real pic haha");
-
-    });
-
-    function replaceImageonClick() {
-        var image = document.querySelector(".sr");
-        image.src = "https://static.vecteezy.com/system/resources/thumbnails/023/465/372/small_2x/cute-pig-looking-into-the-camera-and-laughing-happily-ai-generated-photo.jpg"
-        }
-</script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
 
+:root {
+    --pink: #f5b8cd;
+    --pink-dark: #e88eae;
+    --pink-light: #fff0f5;
+    --cream: #fffaf7;
+    --text: #45333b;
+    --muted: #8b7480;
+    --white: #ffffff;
+}
 
-  *{
+* {
     margin: 0;
     padding: 0;
-    font-family: Comic Sans MS;
-    background-color: #f0f0f0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-img{
-    height: 600px;
-    width: 600px;
-    border-radius: 50%;
-    border: 2px solid #000;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
 }
 
-.heading-stuff h2{
-    text-align: center;
-    background-color: green;
+::selection {
+    background: var(--pink);
     color: white;
-    margin: 20px 0;
-    padding: 10px;
 }
 
-.heading-stuff p{
+nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,250,247,0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #f8e3eb;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--pink-dark);
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--pink-dark);
+}
+
+.hero {
+    min-height: 100vh;
+    padding: 130px 8% 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.badge {
+    display: inline-block;
+    background: #fff0f5;
+    color: #b45e7d;
+    border: 1px solid #f5d5e2;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(50px, 7vw, 90px);
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+.hero h1 span {
+    color: var(--pink-dark);
+    font-style: italic;
+}
+
+.hero p {
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 500px;
+    margin: 25px 0;
+    font-size: 16px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 14px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--pink-dark);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px #e88eae50;
+}
+
+.btn-secondary {
+    border: 1px solid #e8c5d3;
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background: var(--pink-light);
+}
+
+.hero-image {
+    width: 360px;
+    height: 430px;
+    border-radius: 48% 48% 25px 25px;
+    background: linear-gradient(145deg, #f8d8e5, #f1b5ce);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: 15px 15px 0 #fbe7ee;
+}
+
+.hero-image::before {
+    content: "♡";
+    position: absolute;
+    top: -25px;
+    right: -15px;
+    font-size: 45px;
+    color: #df89aa;
+    animation: float 3s infinite;
+}
+
+.hero-image::after {
+    content: "dreaming big ✧";
+    position: absolute;
+    bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #a35d7b;
+}
+
+section {
+    padding: 100px 8%;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 45px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.section-sub {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 50px;
+}
+
+.about {
+    background: var(--pink-light);
+}
+
+.about-card {
+    max-width: 850px;
+    margin: auto;
+    padding: 45px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 10px 40px #e7bfd050;
+}
+
+.about-card p {
+    line-height: 2;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.about-card p + p {
+    margin-top: 20px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.skill-card {
+    padding: 30px;
+    border: 1px solid #f1dce5;
+    background: white;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px #e9c6d450;
+}
+
+.skill-card .icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.skill-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.skill-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+.projects {
+    background: #fff4f8;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.project {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    border: 1px solid #f4dce7;
+    transition: 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-6px);
+}
+
+.project-icon {
+    height: 150px;
+    background: linear-gradient(135deg, #fbe0e9, #fff1f5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 65px;
+    margin-bottom: 25px;
+}
+
+.project h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.project p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 7px 12px;
+    background: var(--pink-light);
+    color: #b45e7d;
+    border-radius: 50px;
+    font-size: 12px;
+}
+
+.dream {
+    background: #fffaf7;
+}
+
+.dream-card {
+    max-width: 950px;
+    margin: auto;
+    background: #302b2d;
+    color: white;
+    padding: 55px;
+    border-radius: 35px;
+    position: relative;
+    overflow: hidden;
+}
+
+.dream-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.dream-card p {
+    color: #d9cbd0;
+    line-height: 1.9;
+    max-width: 600px;
+}
+
+.dream-card .bmw {
+    font-size: 80px;
+    margin: 30px 0;
+}
+
+.dream-card .dream-label {
+    color: #f3b9d0;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.contact {
+    background: var(--pink-light);
     text-align: center;
 }
 
-.buttons-class button{
-    height: 50px;
-    width: 50px;
-    margin-left: 10px;
-    background-color: white;
-    color: red;
-    border-radius: 30%;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+.contact-box {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 50px 30px;
+    border-radius: 30px;
 }
 
-
-.buttons-class button:hover{
-    height: 50px;
-    width: 50px;
-    margin-left: 10px;
-    transform: translateY(-5px);
-
+.contact-box p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 20px 0;
 }
 
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+    color: var(--muted);
+    background: var(--cream);
+}
 
+.heart {
+    color: #e88eae;
+}
+
+.floating {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    border: none;
+    background: #e88eae;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 99;
+    box-shadow: 0 5px 20px #e88eae50;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 850px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 140px;
+    }
+
+    .hero-content {
+        margin: auto;
+    }
+
+    .hero p {
+        margin: 25px auto;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 280px;
+        height: 330px;
+        font-size: 80px;
+    }
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    section {
+        padding: 75px 6%;
+    }
+
+    .dream-card {
+        padding: 35px;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    nav ul {
+        gap: 9px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+    .section-title {
+        font-size: 35px;
+    }
+
+    .about-card {
+        padding: 28px;
+    }
+
+    .dream-card h3 {
+        font-size: 32px;
+    }
+}
 </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">babita ♡</div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+        <div class="badge">✧ a little girl with big dreams ✧</div>
+
+        <h1>Hello,<br>
+        I'm <span>Babita.</span></h1>
+
+        <p>
+            A BCA student, creative soul and dreamer trying to turn
+            little ideas into something beautiful. Still learning,
+            still growing, and definitely dreaming bigger.
+        </p>
+
+        <div class="buttons">
+            <a href="#projects" class="btn btn-primary">Explore my work ♡</a>
+            <a href="#about" class="btn btn-secondary">Get to know me</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        🌷
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <h2 class="section-title">A little about me</h2>
+    <p class="section-sub">Not just a student, but a girl building her own story ✿</p>
+
+    <div class="about-card">
+        <p>
+            Hi! I'm Babita, currently pursuing my Bachelor of Computer
+            Applications (BCA) in Nepal. I'm interested in technology,
+            creativity, design and discovering what I'm capable of.
+        </p>
+
+        <p>
+            I'm not someone who has everything figured out yet, and that's okay.
+            I'm learning programming, exploring design, working on projects
+            and slowly building confidence in myself and my abilities.
+        </p>
+
+        <p>
+            My goal is to become independent, create meaningful things,
+            make my family proud and build a life that once existed
+            only in my imagination.
+        </p>
+
+        <p>
+            <b>Currently:</b> learning, creating, making mistakes
+            and trying again. ♡
+        </p>
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+
+    <h2 class="section-title">Things I'm exploring</h2>
+    <p class="section-sub">Little skills, big possibilities ✧</p>
+
+    <div class="skills-grid">
+
+        <div class="skill-card">
+            <div class="icon">💻</div>
+            <h3>Programming</h3>
+            <p>
+                Learning C programming, logic building, basic algorithms
+                and the fundamentals of computer science.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <div class="icon">🎀</div>
+            <h3>Web Design</h3>
+            <p>
+                Exploring HTML, CSS and JavaScript to build websites
+                that look simple, creative and beautiful.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <div class="icon">🎨</div>
+            <h3>Creativity</h3>
+            <p>
+                Interested in visual design, social media content,
+                aesthetics, editing and creative ideas.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <div class="icon">📚</div>
+            <h3>Learning</h3>
+            <p>
+                Always curious to learn new things, explore different
+                opportunities and improve myself.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+
+    <h2 class="section-title">My little creations</h2>
+    <p class="section-sub">Every project is a step forward ♡</p>
+
+    <div class="project-grid">
+
+        <div class="project">
+            <div class="project-icon">🏦</div>
+            <h3>Smart Bank</h3>
+            <p>
+                A beginner-friendly bank management system built
+                using C programming. Includes account creation,
+                account management, transactions and file handling.
+            </p>
+            <span class="tag">C Programming</span>
+        </div>
+
+        <div class="project">
+            <div class="project-icon">🌿</div>
+            <h3>Eco-Vera</h3>
+            <p>
+                A sustainability-focused idea exploring Titepati
+                (Artemisia) skincare products, local resources,
+                affordable solutions and opportunities for communities.
+            </p>
+            <span class="tag">Innovation</span>
+        </div>
+
+        <div class="project">
+            <div class="project-icon">🚘</div>
+            <h3>BMW Dream Space</h3>
+            <p>
+                A creative social media journey inspired by BMW,
+                automotive aesthetics, dream cars and the idea
+                that big dreams can start small.
+            </p>
+            <span class="tag">Content Creation</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DREAMS -->
+<section class="dream">
+
+    <div class="dream-card">
+
+        <div class="dream-label">A DREAM THAT NEVER LEFT ✧</div>
+
+        <div class="bmw">🏎️</div>
+
+        <h3>One day, it's mine.</h3>
+
+        <p>
+            Somewhere between studying, figuring out life and working
+            on myself, there's a dream of owning a BMW.
+            Not just a car, but a reminder of how far I came,
+            how hard I worked and what I was once brave enough
+            to dream about.
+        </p>
+
+        <p style="margin-top:20px;">
+            Until then, I'll keep working quietly.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2 class="section-title">Let's connect ♡</h2>
+    <p class="section-sub">Every great connection starts somewhere.</p>
+
+    <div class="contact-box">
+
+        <div style="font-size:50px;">💌</div>
+
+        <h3 style="font-family:'Playfair Display',serif;font-size:30px;">
+            Have something in mind?
+        </h3>
+
+        <p>
+            I'd love to connect, learn, collaborate or explore
+            new opportunities.
+        </p>
+
+        <!-- Replace this email with your real email -->
+        <a href="mailto:your@email.com" class="btn btn-primary">
+            Say hello ✧
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+    Made with <span class="heart">♡</span> and a little bit of dreaming.
+    <br><br>
+    © <span id="year"></span> Babita
+</footer>
+
+<button class="floating" onclick="showLove()" title="Click me!">♡</button>
+
+<script>
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function showLove() {
+    const messages = [
+        "You are doing better than you think. ♡",
+        "Keep dreaming, pretty girl. ✨",
+        "Your story is still being written. 🌷",
+        "One day, you'll thank yourself for not giving up. 💗",
+        "Small steps still count. ♡",
+        "You are allowed to grow at your own pace. ✧"
+    ];
+
+    alert(messages[Math.floor(Math.random() * messages.length)]);
+}
+
+</script>
+
 </body>
 </html>
